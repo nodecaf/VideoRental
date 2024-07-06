@@ -16,8 +16,19 @@ type shop struct{}
 
 type clerk interface {
 	list() []*tape
+	borrow(*tape) bool
 }
 
 func (s shop) list() []*tape {
 	return shelf
+}
+
+func (s shop) borrow(btape *tape) bool {
+	for _, stape := range shelf {
+		if (*stape).Title == (*btape).Title && (*stape).Available {
+			(*stape).Available = false
+			return true
+		}
+	}
+	return false
 }

@@ -22,5 +22,6 @@ func createRoutes() chi.Router {
 	r := chi.NewRouter()
 	r.Use(middleware.Recoverer)
 	r.Get("/", myBB.listHandler)
+	r.Post("/borrow", myBB.borrowHandler)
 	return r
 }

@@ -22,3 +22,16 @@ func (h rental) listHandler(w http.ResponseWriter, r *http.Request) {
 
 	// w.Write(tj)
 }
+func (h rental) borrowHandler(w http.ResponseWriter, r *http.Request) {
+	var bt *tape
+	err := json.NewDecoder(r.Body).Decode(&bt)
+	if err == nil {
+		br := h.store.borrow(bt)
+		if br {
+			w.Write([]byte("Borrowed successfully"))
+
+		} else {
+			w.Write([]byte("Failed to borrow"))
+		}
+	}
+}
