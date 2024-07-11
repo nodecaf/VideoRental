@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>B-b-blockbusta!</title>
+</head>
+<body>
+   <h1>Welcome to B-b-blockbusta!</h1>
+   <h2>The Video List:</h2>
+    <form action="tape" method="post">
+   {{range .}}
+   <input type="radio" name="tape" value="{{.Title}}">
+   {{.Title}} {{.Year}} {{.Available}} <br>
+   {{end}}
+   <input type="submit" name="submit" value="borrow">
+   <input type="submit" name="submit" value="return">
+</form>
+</body>
+</html>
